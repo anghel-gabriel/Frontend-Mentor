@@ -29,7 +29,7 @@ This is a solution to the [Social proof section challenge on Frontend Mentor](ht
 1. DESKTOP VERSION
    ![](./screenshots/screenshot_desktop_version.png)
 
-2. MOBILE VERSION
+2. MOBILE VERSION <br>
    ![](./screenshots/screenshot_mobile_version.png)
 
 ## Design
