@@ -145,14 +145,14 @@ h2,
 }
 
 .positive::before {
-	content: url("../images/icon-up.svg"); /* with class ModalCarrot ??*/
+	content: url("../images/icon-up.svg");
 	position: relative;
 	top: -1.5px;
 	margin-right: 4px;
 }
 
 .negative::before {
-	content: url("../images/icon-down.svg"); /* with class ModalCarrot ??*/
+	content: url("../images/icon-down.svg");
 	position: relative;
 	top: -2px;
 	margin-right: 4px;
@@ -243,7 +243,7 @@ label {
 	position: relative;
 }
 
-label:after {
+label::after {
 	content: "";
 	position: absolute;
 	top: 3px;
@@ -259,7 +259,7 @@ input:checked + label {
 	background: linear-gradient(#40db82, #388fe7);
 }
 
-input:checked + label:after {
+input:checked + label::after {
 	left: calc(100% - 5px);
 	transform: translateX(-100%);
 }

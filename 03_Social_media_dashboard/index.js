@@ -1,6 +1,6 @@
-var checkbox = document.querySelector("input[name=switch]");
+const toggleCheckboxSelector = document.querySelector("input[name=switch]");
 
-checkbox.addEventListener("change", function () {
+toggleCheckboxSelector.addEventListener("change", function () {
 	if (this.checked) {
 		document.documentElement.setAttribute("data-theme", "dark");
 	} else {
