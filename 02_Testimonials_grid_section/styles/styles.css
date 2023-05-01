@@ -1,0 +1,141 @@
+/* Font import */
+@import url("https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600&display=swap");
+
+/* Declaring variables */
+:root {
+	/* Background colors */
+	--bg-purple: hsl(263, 55%, 52%);
+	--bg-grayish-blue: hsl(217, 19%, 35%);
+	--bg-blackish-blue: hsl(219, 29%, 14%);
+	--bg-white: hsl(0, 0%, 100%);
+	--bg-body: #f2f2f2;
+	/* Text colors */
+	--white: hsl(0, 0%, 100%);
+	--grayish-blue: hsl(217, 19%, 35%);
+	--light-graysh-blue: hsl(210, 46%, 95%);
+}
+
+/* CSS reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* General styling */
+body {
+	background-color: var(--bg-body);
+	font-size: 13px;
+	font-family: "Barlow Semi Condensed", sans-serif;
+	font-weight: 500;
+}
+
+/* Setting the grid */
+.container {
+	display: grid;
+	gap: 24px;
+	grid-template-columns: repeat(4, 1fr);
+	max-width: 1100px;
+	margin: 100px auto;
+}
+
+.two-columns {
+	grid-column: span 2;
+}
+
+.column-card {
+	grid-row-start: 1;
+	grid-column-start: 4;
+	grid-column-end: 5;
+	grid-row-end: 3;
+}
+
+/* Card & card components */
+
+.card {
+	border-radius: 8px;
+	padding: 32px 26px;
+}
+
+.header {
+	display: flex;
+	margin-bottom: 18px;
+}
+
+.status {
+	font-size: 11px;
+	opacity: 0.5;
+}
+
+.summary {
+	font-size: 20px;
+	font-weight: 600;
+	line-height: 24px;
+	margin-bottom: 24px;
+	position: relative;
+	z-index: 1;
+}
+
+.review {
+	line-height: 18px;
+	opacity: 0.7;
+}
+
+img {
+	width: 28px;
+	height: 28px;
+	border-radius: 50%;
+	margin-right: 17px;
+}
+
+/* Individual styling */
+.purple-bg {
+	background-color: var(--bg-purple);
+	color: var(--white);
+	position: relative;
+}
+
+.quotation-img {
+	position: absolute;
+	top: 0;
+	width: 104px;
+	height: auto;
+	right: 5%;
+	z-index: 0;
+}
+
+.grey-bg {
+	background-color: var(--bg-grayish-blue);
+	color: var(--white);
+}
+
+.white-bg {
+	background-color: var(--bg-white);
+	color: var(--grayish-blue);
+}
+
+.black-bg {
+	background-color: var(--bg-blackish-blue);
+	color: var(--light-graysh-blue);
+}
+
+.purplecard-imageborder {
+	display: block;
+	box-sizing: content-box;
+	border: 2px solid rgba(255, 255, 255, 0.228);
+}
+
+.darkcard-imageborder {
+	display: block;
+	box-sizing: content-box;
+	border: 2px solid #733fc8;
+}
+
+/* Mobile version */
+@media screen and (max-width: 800px) {
+	.container {
+		display: flex;
+		flex-direction: column;
+		padding: 30px;
+	}
+}
