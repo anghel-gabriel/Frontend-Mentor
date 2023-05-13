@@ -1,0 +1,51 @@
+/* Font import */
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500&display=swap");
+
+/* CSS import */
+@import url(./profile-container.css);
+@import url(./cards-container.css);
+@import url(./mobile-styling.css);
+
+/* CSS reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* Variables */
+:root {
+	/* profile */
+	--blue: hsl(246, 80%, 60%);
+	/* activities */
+	--work: hsl(15, 100%, 70%);
+	--play: hsl(195, 74%, 62%);
+	--study: hsl(348, 100%, 68%);
+	--exercise: hsl(145, 58%, 55%);
+	--social: hsl(264, 64%, 52%);
+	--self-care: hsl(43, 84%, 65%);
+	/* neutral */
+	--bg: hsl(226, 43%, 10%);
+	--divs: hsl(235, 46%, 20%);
+	--time: hsl(235, 45%, 61%);
+	--text-color: hsl(236, 100%, 87%);
+	/* font */
+	--text-font: "Rubik", sans-serif;
+	--text-size: 18px;
+}
+
+html {
+	font-size: var(--text-size);
+}
+
+body {
+	min-width: 100vw;
+	max-width: 1440px;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: var(--text-color);
+	font-family: var(--text-font);
+	background-color: var(--bg);
+}
