@@ -103,10 +103,12 @@ const dataObject = [
 		},
 	},
 ];
+
 /* Buttons (list-items) */
 const dailyBtn = document.querySelector(".daily-btn");
 const weeklyBtn = document.querySelector(".weekly-btn");
 const monthlyBtn = document.querySelector(".monthly-btn");
+const period = document.querySelector(".period");
 
 /* DOM - data */
 const currentWorkTime = document.querySelector(".current-work-time");
@@ -127,6 +129,9 @@ const previousSocialTime = document.querySelector(".previous-social-time");
 const currentSelfCareTime = document.querySelector(".current-self-care-time");
 const previousSelfCareTime = document.querySelector(".previous-self-care-time");
 
+const periodElements = document.getElementsByClassName("period");
+
+/* Triggers */
 dailyBtn.addEventListener("click", function () {
 	dailyBtn.classList.add("active");
 	weeklyBtn.classList.remove("active");
@@ -143,6 +148,9 @@ dailyBtn.addEventListener("click", function () {
 	previousSocialTime.textContent = dataObject[4].timeframes.daily.previous;
 	currentSelfCareTime.textContent = dataObject[5].timeframes.daily.current;
 	previousSelfCareTime.textContent = dataObject[5].timeframes.daily.previous;
+	for (let i = 0; i < periodElements.length; i++) {
+		periodElements[i].textContent = "day";
+	}
 });
 
 weeklyBtn.addEventListener("click", function () {
@@ -161,6 +169,9 @@ weeklyBtn.addEventListener("click", function () {
 	previousSocialTime.textContent = dataObject[4].timeframes.weekly.previous;
 	currentSelfCareTime.textContent = dataObject[5].timeframes.weekly.current;
 	previousSelfCareTime.textContent = dataObject[5].timeframes.weekly.previous;
+	for (let i = 0; i < periodElements.length; i++) {
+		periodElements[i].textContent = "week";
+	}
 });
 
 monthlyBtn.addEventListener("click", function () {
@@ -179,4 +190,7 @@ monthlyBtn.addEventListener("click", function () {
 	previousSocialTime.textContent = dataObject[4].timeframes.monthly.previous;
 	currentSelfCareTime.textContent = dataObject[5].timeframes.monthly.current;
 	previousSelfCareTime.textContent = dataObject[5].timeframes.monthly.previous;
+	for (let i = 0; i < periodElements.length; i++) {
+		periodElements[i].textContent = "month";
+	}
 });
