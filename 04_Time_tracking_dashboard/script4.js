@@ -117,7 +117,7 @@ const periodAreas = document.querySelectorAll(".period");
 
 /* DOM - data */
 function changeData(x, y) {
-	for (i = 0; i < currentAreas.length; i++) {
+	for (let i = 0; i < currentAreas.length; i++) {
 		currentAreas[i].textContent = dataObject[i].timeframes[y].current;
 		previousAreas[i].textContent = dataObject[i].timeframes[y].previous;
 	}
