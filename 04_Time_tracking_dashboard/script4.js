@@ -115,8 +115,7 @@ const periodAreas = document.querySelectorAll(".period");
 /* Buttons triggering functions */
 for (const periodBtn of periodBtns) {
 	let period, interval;
-	periodButtonType = periodBtn.getAttribute("data-button-type");
-	switch (periodButtonType) {
+	switch (periodBtn.getAttribute("data-button-type")) {
 		case "daily":
 			period = "day";
 			interval = "daily";
