@@ -104,41 +104,43 @@ const dataObject = [
 	},
 ];
 
-/* Buttons (list-items) */
-const dailyBtn = document.querySelector(".daily-btn");
-const weeklyBtn = document.querySelector(".weekly-btn");
-const monthlyBtn = document.querySelector(".monthly-btn");
-const periodBtns = [dailyBtn, weeklyBtn, monthlyBtn];
+/* Buttons for changing the data (list-items) */
+const periodBtns = document.querySelectorAll("li");
 
 /* Changing Areas */
 const currentAreas = document.querySelectorAll(".current");
 const previousAreas = document.querySelectorAll(".previous");
 const periodAreas = document.querySelectorAll(".period");
 
-/* DOM - data */
-function changeData(x, y) {
-	for (let i = 0; i < currentAreas.length; i++) {
-		currentAreas[i].textContent = dataObject[i].timeframes[y].current;
-		previousAreas[i].textContent = dataObject[i].timeframes[y].previous;
-	}
-	for (let j = 0; j < periodAreas.length; j++) {
-		periodAreas[j].textContent = x;
-	}
-	for (let k = 0; k < periodBtns.length; k++) {
-		periodBtns[k].classList.remove("active");
-	}
-	event.target.classList.toggle("active");
-}
-
 /* Buttons triggering functions */
-dailyBtn.addEventListener("click", () => {
-	changeData("day", "daily");
-});
-
-weeklyBtn.addEventListener("click", () => {
-	changeData("week", "weekly");
-});
-
-monthlyBtn.addEventListener("click", () => {
-	changeData("month", "monthly");
-});
+for (const periodBtn of periodBtns) {
+	let period, interval;
+	periodButtonType = periodBtn.getAttribute("data-button-type");
+	switch (periodButtonType) {
+		case "daily":
+			period = "day";
+			interval = "daily";
+			break;
+		case "weekly":
+			period = "week";
+			interval = "weekly";
+			break;
+		case "monthly":
+			period = "month";
+			interval = "monthly";
+			break;
+	}
+	periodBtn.addEventListener("click", (e) => {
+		for (let i = 0; i < currentAreas.length; i++) {
+			currentAreas[i].textContent = dataObject[i].timeframes[interval].current;
+			previousAreas[i].textContent = dataObject[i].timeframes[interval].previous;
+		}
+		for (let j = 0; j < periodAreas.length; j++) {
+			periodAreas[j].textContent = period;
+		}
+		for (let k = 0; k < periodBtns.length; k++) {
+			periodBtns[k].classList.remove("active");
+		}
+		e.target.classList.toggle("active");
+	});
+}
