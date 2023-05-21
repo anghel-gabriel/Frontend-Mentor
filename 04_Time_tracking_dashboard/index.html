@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+		<title>Frontend Mentor | Time tracking dashboard</title>
+		<link rel="stylesheet" href="./styles/styles.css" />
+	</head>
+	<body>
+		<div class="profile-container">
+			<div class="profile-container__bio">
+				<img class="profile-picture" src="./images/image-jeremy.png" alt="rounded-profile-picture-of-jeremy" />
+				<h1 class="title"><span class="pre-name">Report for</span> Jeremy Robson</h1>
+			</div>
+			<div class="profile-container__period-selector">
+				<ul>
+					<li data-button-type="daily" class="daily-btn active">Daily</li>
+					<li data-button-type="weekly" class="weekly-btn">Weekly</li>
+					<li data-button-type="monthly" class="monthly-btn">Monthly</li>
+				</ul>
+			</div>
+		</div>
+		<div class="cards-container">
+			<div class="card work">
+				<img class="card-bg-image" src="./images/icon-work.svg" alt="work-icon" />
+				<div class="card-text__container">
+					<div class="card__header">
+						<p class="category">Work</p>
+						<p class="dots">●●●</p>
+					</div>
+					<div class="card__datas">
+						<p class="time-data"><span class="data current">5</span> hrs</p>
+						<p class="previous-text">Last <span class="period">day</span> - <span class="data previous">7</span>hrs</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="card play">
+				<img class="card-bg-image" src="./images/icon-play.svg" alt="play-icon" />
+				<div class="card-text__container">
+					<div class="card__header">
+						<p class="category">Play</p>
+						<p class="dots">●●●</p>
+					</div>
+					<div class="card__datas">
+						<p class="time-data"><span class="data current">1</span> hrs</p>
+						<p class="previous-text">Last <span class="period">day</span> - <span class="data previous">2</span>hrs</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="card study">
+				<img class="card-bg-image" src="./images/icon-study.svg" alt="study-icon" />
+				<div class="card-text__container">
+					<div class="card__header">
+						<p class="category">Study</p>
+						<p class="dots">●●●</p>
+					</div>
+					<div class="card__datas">
+						<p class="time-data"><span class="data current">0</span> hrs</p>
+						<p class="previous-text">Last <span class="period">day</span> - <span class="data previous">1</span>hrs</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="card exercise">
+				<img class="card-bg-image" src="./images/icon-exercise.svg" alt="exercise-icon" />
+				<div class="card-text__container">
+					<div class="card__header">
+						<p class="category">Exercise</p>
+						<p class="dots">●●●</p>
+					</div>
+					<div class="card__datas">
+						<p class="time-data"><span class="data current">1</span> hrs</p>
+						<p class="previous-text">Last <span class="period">day</span> - <span class="data previous">1</span>hrs</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="card social">
+				<img class="card-bg-image" src="./images/icon-social.svg" alt="social-icon" />
+				<div class="card-text__container">
+					<div class="card__header">
+						<p class="category">Social</p>
+						<p class="dots">●●●</p>
+					</div>
+					<div class="card__datas">
+						<p class="time-data"><span class="data current">1</span> hrs</p>
+						<p class="previous-text">Last <span class="period">day</span> - <span class="data previous">3</span>hrs</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="card self-care">
+				<img class="card-bg-image" src="./images/icon-self-care.svg" alt="self-care-icon" />
+				<div class="card-text__container">
+					<div class="card__header">
+						<p class="category">Self Care</p>
+						<p class="dots">●●●</p>
+					</div>
+					<div class="card__datas">
+						<p class="time-data"><span class="data current">0</span> hrs</p>
+						<p class="previous-text">Last <span class="period">day</span> - <span class="data previous">1</span>hrs</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="./script4.js"></script>
+	</body>
+</html>
