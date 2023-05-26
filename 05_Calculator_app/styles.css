@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+:root {
+	--main-bg: hsl(222, 26%, 31%);
+	--toggle-bg: hsl(223, 31%, 20%);
+	--screen-bg: hsl(224, 36%, 15%);
+	--key2-bg: hsl(225, 21%, 49%);
+	--key2-shadow: hsl(224, 28%, 35%);
+	--key3-bg: hsl(6, 63%, 50%);
+	--key3-shadow: hsl(6, 70%, 34%);
+	--key1-bg: hsl(30, 25%, 89%);
+	--key1-shadow: hsl(28, 16%, 65%);
+	--btn-text: hsl(221, 14%, 31%);
+	--btn2-text: hsl(0, 0%, 100%);
+}
+
+/* - Very dark desaturated blue (main background): 
+- Very dark desaturated blue (toggle background, keypad background): hsl(223, 31%, 20%)
+- Very dark desaturated blue (screen background): hsl(224, 36%, 15%)
+- Desaturated dark blue (key background): hsl(225, 21%, 49%)
+- Desaturated dark blue (key shadow): hsl(224, 28%, 35%)
+- Red (key background, toggle): hsl(6, 63%, 50%)
+- Dark red (key shadow): hsl(6, 70%, 34%)
+- Light grayish orange (key background): hsl(30, 25%, 89%)
+- Grayish orange (key shadow): hsl(28, 16%, 65%)
+- Very dark grayish blue: hsl(221, 14%, 31%)
+- White: hsl(0, 0%, 100%) */
+
+body {
+	font-family: 'League Spartan', sans-serif;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--main-bg);
+	min-height: 100vh;
+	min-width: 100vw;
+	gap: 10px;
+}
+
+.screen-container {
+	display: flex;
+	flex-direction: column;
+	width: 440px;
+	height: 100px;
+	background-color: var(--screen-bg);
+	border-radius: 10px;
+	padding: 20px 30px 20px 30px;
+	font-weight: 700;
+	gap: 15px;
+	color: var(--btn2-text);
+	text-align: right;
+}
+
+.upper-display {
+	color: var(--btn2-text);
+	font-size: 20px;
+	height: 40px;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	gap: 5px;
+}
+
+.main-display {
+	font-size: 40px;
+	height: 35px;
+	width: 100%;
+}
+
+.buttons-container {
+	background-color: var(--toggle-bg);
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 20px;
+	width: 440px;
+	padding: 30px;
+	border-radius: 10px;
+}
+
+.btn {
+	background-color: var(--key1-bg);
+	color: var(--btn-text);
+	height: 60px;
+	border-radius: 10px;
+	width: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 30px;
+	font-weight: 700;
+	filter: brightness(0.9);
+	padding-top: 5px;
+}
+
+.btn:hover {
+	cursor: pointer;
+	filter: none;
+}
+
+/* Wider buttons */
+.btn:nth-child(17),
+.btn:nth-child(18) {
+	width: 180px;
+}
+
+/* Second color buttons */
+.btn:nth-child(4),
+.btn:nth-child(17) {
+	background-color: var(--key2-bg);
+	color: var(--btn2-text);
+}
+
+/* Third color buttons */
+.btn:nth-child(18) {
+	background-color: var(--key3-bg);
+	color: var(--btn2-text);
+}
