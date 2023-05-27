@@ -14,6 +14,7 @@ const resetBtn = document.querySelector('.reset-btn');
 const upperDisplayBox = document.querySelector('.previous-number'); // upper display
 const operatorBox = document.querySelector('.operator'); // the operator sign shown in the upper display
 const mainDisplay = document.querySelector('.main-display'); //main display selector
+const themeSwitchBtn = document.querySelector('#switch-btn');
 mainDisplay.textContent = '0'; //getting sure that shown text is a string
 
 /* ------------------- DISPLAY UPDATE FUNCTIONS ------------------- */
@@ -54,7 +55,7 @@ dotBtn.addEventListener('click', () => {
 for (let i = 0; i < operatorButtons.length; i++) {
 	operatorButtons[i].addEventListener('click', () => {
 		/* CASE 1: when upper display and main display have values  */
-		if (upperDisplayBox.textContent && mainDisplay.textContent.length > 0) {
+		if (upperDisplayBox.textContent.length > 0 && mainDisplay.textContent.length > 0) {
 			TOTAL = parseFloat(upperDisplayBox.textContent);
 			RIGHT_NUMBER = parseFloat(mainDisplay.textContent);
 			switch (OPERATOR) {
@@ -112,4 +113,35 @@ equalBtn.addEventListener('click', () => {
 			alert('There is an error!');
 	}
 	mainDisplay.textContent = TOTAL;
+});
+
+/* ------------------- THEME SWITCHER ------------------- */
+/* Setting the default */
+document.documentElement.setAttribute('data-theme', 'numberOne');
+/* Theme switcher */
+themeSwitchBtn.addEventListener('click', (e) => {
+	console.log(themeSwitchBtn.classList);
+	switch (themeSwitchBtn.classList[0]) {
+		case 'switcher-left':
+			themeSwitchBtn.classList.remove('switcher-left');
+			console.log(themeSwitchBtn.classList);
+			themeSwitchBtn.classList.toggle('switcher-middle');
+			document.documentElement.setAttribute('data-theme', 'numberTwo');
+			break;
+		case 'switcher-middle':
+			themeSwitchBtn.classList.remove('switcher-middle');
+			console.log(themeSwitchBtn.classList);
+			themeSwitchBtn.classList.toggle('switcher-right');
+			document.documentElement.setAttribute('data-theme', 'numberThree');
+			break;
+		case 'switcher-right':
+			themeSwitchBtn.classList.remove('switcher-right');
+			console.log(themeSwitchBtn.classList);
+			themeSwitchBtn.classList.toggle('switcher-left');
+			document.documentElement.setAttribute('data-theme', 'numberOne');
+			break;
+
+		default:
+			alert('There is an error switching the theme');
+	}
 });
