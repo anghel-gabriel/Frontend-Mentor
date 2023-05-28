@@ -11,6 +11,7 @@ const operatorButtons = document.querySelectorAll('.operator-btn'); //selecting 
 const dotBtn = document.querySelector('.dot-btn'); //selecting the dot button
 const equalBtn = document.querySelector('.equal-btn');
 const resetBtn = document.querySelector('.reset-btn');
+const deleteBtn = document.querySelector('.btn-delete');
 const upperDisplayBox = document.querySelector('.previous-number'); // upper display
 const operatorBox = document.querySelector('.operator'); // the operator sign shown in the upper display
 const mainDisplay = document.querySelector('.main-display'); //main display selector
@@ -26,6 +27,12 @@ resetBtn.addEventListener('click', () => {
 	OPERATOR = '';
 	mainDisplay.textContent = '0';
 	upperDisplayBox.textContent = '';
+	operatorBox.textContent = OPERATOR;
+});
+
+/* Delete button */
+deleteBtn.addEventListener('click', () => {
+	mainDisplay.textContent = '0';
 });
 
 /* ------------------- BUTTON EVENTS ------------------- */
@@ -93,26 +100,32 @@ for (let i = 0; i < operatorButtons.length; i++) {
 
 /* Equal button  */
 equalBtn.addEventListener('click', () => {
-	TOTAL = parseFloat(upperDisplayBox.textContent); //i take tha value of upper number and assign it to TOTAL
-	RIGHT_NUMBER = parseFloat(mainDisplay.textContent); // the shown value (of the 2nd number) will be assigned to RIGHT_NUMBER
-	OPERATOR = operatorBox.textContent;
-	switch (OPERATOR) {
-		case '+':
-			TOTAL += RIGHT_NUMBER;
-			break;
-		case '*':
-			TOTAL *= RIGHT_NUMBER;
-			break;
-		case '/':
-			TOTAL /= RIGHT_NUMBER;
-			break;
-		case '-':
-			TOTAL -= RIGHT_NUMBER;
-			break;
-		default:
-			alert('There is an error!');
+	if (upperDisplayBox.textContent.length < 1) {
+		alert('You should insert two numbers.');
+	} else {
+		TOTAL = parseFloat(upperDisplayBox.textContent); //i take the value of upper number and assign it to TOTAL
+		RIGHT_NUMBER = parseFloat(mainDisplay.textContent); // the shown value (of the 2nd number) will be assigned to RIGHT_NUMBER
+		OPERATOR = operatorBox.textContent;
+		switch (OPERATOR) {
+			case '+':
+				TOTAL += RIGHT_NUMBER;
+				break;
+			case '*':
+				TOTAL *= RIGHT_NUMBER;
+				break;
+			case '/':
+				TOTAL /= RIGHT_NUMBER;
+				break;
+			case '-':
+				TOTAL -= RIGHT_NUMBER;
+				break;
+			default:
+				break;
+		}
+		mainDisplay.textContent = TOTAL;
+		upperDisplayBox.textContent = '';
+		operatorBox.textContent = '';
 	}
-	mainDisplay.textContent = TOTAL;
 });
 
 /* ------------------- THEME SWITCHER ------------------- */
@@ -140,8 +153,7 @@ themeSwitchBtn.addEventListener('click', (e) => {
 			themeSwitchBtn.classList.toggle('switcher-left');
 			document.documentElement.setAttribute('data-theme', 'numberOne');
 			break;
-
 		default:
-			alert('There is an error switching the theme');
+			break;
 	}
 });
