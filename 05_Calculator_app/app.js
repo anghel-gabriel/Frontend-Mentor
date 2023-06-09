@@ -1,156 +1,161 @@
-/* @TODO:  delete button, upper display content, separate 3 digits by commas*/
-
 'use strict';
 
-let TOTAL = '0'; // every operation will be like TOTAL [OPERATOR] RIGHT_NUMBER
-let RIGHT_NUMBER; // the number after the operator
-let OPERATOR; //variable which will hold a string value
+/* ------------------- DOM WORK ------------------- */
 
-const numberButtons = document.querySelectorAll('.number-btn'); //selecting all the number buttons from 0-9
-const operatorButtons = document.querySelectorAll('.operator-btn'); //selecting all the operator buttons, "+", "-", "*", "/"
-const dotBtn = document.querySelector('.dot-btn'); //selecting the dot button
+// every operation will be like: total [operator] rightNumber
+let total = '0';
+// the number after the operator
+let rightNumber;
+// variable which will hold a string value (the operator symbol)
+let operator;
+// selecting all the number buttons from 0-9
+const numberButtons = document.querySelectorAll('.number-btn');
+// selecting all the operator buttons, "+", "-", "*", "/"
+const operatorButtons = document.querySelectorAll('.operator-btn');
+// selecting the other buttons
+const dotBtn = document.querySelector('.dot-btn');
 const equalBtn = document.querySelector('.equal-btn');
 const resetBtn = document.querySelector('.reset-btn');
 const deleteBtn = document.querySelector('.btn-delete');
-const upperDisplayBox = document.querySelector('.previous-number'); // upper display
-const operatorBox = document.querySelector('.operator'); // the operator sign shown in the upper display
-const mainDisplay = document.querySelector('.main-display'); //main display selector
-const themeSwitchBtn = document.querySelector('#switch-btn');
-mainDisplay.textContent = '0'; //getting sure that shown text is a string
+// upper display
+const upperDisplayBox = document.querySelector('.previous-number');
+// the operator sign shown in the upper display
+const operatorBox = document.querySelector('.operator');
+// main display (the display showing inserted number)
+const mainDisplayBox = document.querySelector('.main-display');
+// theme toggle button
+const themeToggleBtn = document.querySelector('#switch-btn');
 
-/* ------------------- DISPLAY UPDATE FUNCTIONS ------------------- */
-
-/* Reset button and function*/
-resetBtn.addEventListener('click', () => {
-	TOTAL = '';
-	RIGHT_NUMBER = '';
-	OPERATOR = '';
-	mainDisplay.textContent = '0';
-	upperDisplayBox.textContent = '';
-	operatorBox.textContent = OPERATOR;
-});
-
-/* Delete button */
-deleteBtn.addEventListener('click', () => {
-	mainDisplay.textContent = '0';
-});
-
-/* ------------------- BUTTON EVENTS ------------------- */
-
-/* Number buttons updating display */
-for (let i = 0; i < numberButtons.length; i++) {
-	numberButtons[i].addEventListener('click', () => {
-		if (mainDisplay.textContent !== '0') {
-			//i don't want to concatenate when the first digit is "0" without a dot after
-			mainDisplay.textContent += numberButtons[i].textContent.toString();
-		} else {
-			mainDisplay.textContent = ''; /* else (when the first digit is "0" and has no dot after, i will replace 0 with empty string so i concatenate) */
-			mainDisplay.textContent += numberButtons[i].textContent.toString();
-		}
-	});
+/* ------------------- EVENT HANDLERS and FUNCTIONS ------------------- */
+function updateOperator(box) {
+	if (box.textContent.length > 0) {
+		operator = box.textContent;
+	}
+	operatorBox.textContent = operator;
+}
+function emptyContent(box) {
+	box.textContent = '';
+}
+function operatorSwitchFunc() {
+	switch (operator) {
+		case '+':
+			total += rightNumber;
+			break;
+		case '*':
+			total *= rightNumber;
+			break;
+		case '/':
+			total /= rightNumber;
+			break;
+		case '-':
+			total -= rightNumber;
+			break;
+		default:
+			break;
+	}
+}
+function deleteBtnHandler() {
+	if (mainDisplayBox.textContent.length > 0 && upperDisplayBox.textContent.length > 0) {
+		emptyContent(mainDisplayBox);
+	} else {
+		mainDisplayBox.textContent = 0;
+	}
 }
 
-/* Dot button */
+/* ------------------- EVENT LISTENERS ------------------- */
+// dot button event
 dotBtn.addEventListener('click', () => {
-	if (mainDisplay.textContent !== '' && !mainDisplay.textContent.includes('.')) {
-		// i want to allow my calculator to add the dot just if the string is not empty (so i won't have ".3") and the text shown does not include a dot
-		mainDisplay.textContent += '.';
+	if (mainDisplayBox.textContent !== '' && !mainDisplayBox.textContent.includes('.')) {
+		// i want to allow my calculator to add the dot just if the string is not empty (so i won't have ".3")
+		mainDisplayBox.textContent += '.';
 	}
 });
 
-/* Operator buttons pressing*/
-for (let i = 0; i < operatorButtons.length; i++) {
-	operatorButtons[i].addEventListener('click', () => {
-		/* CASE 1: when upper display and main display have values  */
-		if (upperDisplayBox.textContent.length > 0 && mainDisplay.textContent.length > 0) {
-			TOTAL = parseFloat(upperDisplayBox.textContent);
-			RIGHT_NUMBER = parseFloat(mainDisplay.textContent);
-			switch (OPERATOR) {
-				case '+':
-					TOTAL += RIGHT_NUMBER;
-					break;
-				case '*':
-					TOTAL *= RIGHT_NUMBER;
-					break;
-				case '/':
-					TOTAL /= RIGHT_NUMBER;
-					break;
-				case '-':
-					TOTAL -= RIGHT_NUMBER;
-					break;
-				default:
-					alert('There is an error!');
-			}
-			OPERATOR = operatorButtons[i].textContent;
-			operatorBox.textContent = OPERATOR;
-			upperDisplayBox.textContent = TOTAL;
-			mainDisplay.textContent = '';
-			/* CASE 2: when we just change the operator */
-		} else if (upperDisplayBox.textContent.length > 0 && mainDisplay.textContent.length < 1) {
-			OPERATOR = operatorButtons[i].textContent;
-			operatorBox.textContent = OPERATOR;
-		} else {
-			upperDisplayBox.textContent = parseFloat(mainDisplay.textContent);
-			mainDisplay.textContent = '';
-			OPERATOR = operatorButtons[i].textContent;
-			operatorBox.textContent = OPERATOR;
+// number buttons event
+numberButtons.forEach((numberBtn) =>
+	numberBtn.addEventListener('click', () => {
+		//i don't want to concatenate when the first digit is "0" without a dot after, so the display couldn't show "03245", it will display "3245" or "0.3245", depending; else (when the first digit is "0" and has no dot after, i will replace 0 with empty string so i concatenate)
+		if (mainDisplayBox.textContent === '0') {
+			emptyContent(mainDisplayBox);
 		}
-	});
-}
+		mainDisplayBox.textContent += numberBtn.textContent.toString();
+	})
+);
 
-/* Equal button  */
+/* operator buttons event */
+operatorButtons.forEach((operatorBtn) =>
+	operatorBtn.addEventListener('click', () => {
+		/* case1: when upper display and main display have values  */
+		if (upperDisplayBox.textContent.length > 0 && mainDisplayBox.textContent.length > 0) {
+			total = parseFloat(upperDisplayBox.textContent);
+			rightNumber = parseFloat(mainDisplayBox.textContent);
+			operatorSwitchFunc();
+			upperDisplayBox.textContent = total;
+			emptyContent(mainDisplayBox);
+			updateOperator(operatorBtn);
+			/* case2: when we just change the operator */
+		} else if (upperDisplayBox.textContent.length > 0 && mainDisplayBox.textContent.length < 1) {
+			updateOperator(operatorBtn);
+		} else {
+			upperDisplayBox.textContent = parseFloat(mainDisplayBox.textContent);
+			emptyContent(mainDisplayBox);
+			updateOperator(operatorBtn);
+		}
+	})
+);
+
+// equal button event
 equalBtn.addEventListener('click', () => {
 	if (upperDisplayBox.textContent.length < 1) {
 		alert('You should insert two numbers.');
 	} else {
-		TOTAL = parseFloat(upperDisplayBox.textContent); //i take the value of upper number and assign it to TOTAL
-		RIGHT_NUMBER = parseFloat(mainDisplay.textContent); // the shown value (of the 2nd number) will be assigned to RIGHT_NUMBER
-		OPERATOR = operatorBox.textContent;
-		switch (OPERATOR) {
-			case '+':
-				TOTAL += RIGHT_NUMBER;
-				break;
-			case '*':
-				TOTAL *= RIGHT_NUMBER;
-				break;
-			case '/':
-				TOTAL /= RIGHT_NUMBER;
-				break;
-			case '-':
-				TOTAL -= RIGHT_NUMBER;
-				break;
-			default:
-				break;
-		}
-		mainDisplay.textContent = TOTAL;
-		upperDisplayBox.textContent = '';
-		operatorBox.textContent = '';
+		// i take the value of upper number and assign it to total
+		total = parseFloat(upperDisplayBox.textContent);
+		// the shown value (of the 2nd number) will be assigned to rightNumber
+		rightNumber = parseFloat(mainDisplayBox.textContent);
+		// operator switch loop
+		updateOperator(operatorBox);
+		operatorSwitchFunc();
+		mainDisplayBox.textContent = total;
+		emptyContent(upperDisplayBox);
+		emptyContent(operatorBox);
 	}
 });
 
-/* ------------------- THEME SWITCHER ------------------- */
-/* Setting the default */
+// delete button event
+deleteBtn.addEventListener('click', deleteBtnHandler);
+
+// reset button event
+resetBtn.addEventListener('click', () => {
+	total = '';
+	rightNumber = '';
+	operator = '';
+	deleteBtnHandler();
+	emptyContent(upperDisplayBox);
+	emptyContent(operatorBox);
+	mainDisplayBox.textContent = '0';
+});
+
+/* ------------------- THEME TOGGLE ------------------- */
+// setting the default
 document.documentElement.setAttribute('data-theme', 'numberOne');
-/* Theme switcher */
-themeSwitchBtn.addEventListener('click', (e) => {
-	console.log(themeSwitchBtn.classList);
-	switch (themeSwitchBtn.classList[0]) {
+// toggle button handler
+themeToggleBtn.addEventListener('click', (e) => {
+	console.log(themeToggleBtn.classList);
+	switch (themeToggleBtn.classList[0]) {
 		case 'switcher-left':
-			themeSwitchBtn.classList.remove('switcher-left');
-			console.log(themeSwitchBtn.classList);
-			themeSwitchBtn.classList.toggle('switcher-middle');
+			themeToggleBtn.classList.remove('switcher-left');
+			themeToggleBtn.classList.toggle('switcher-middle');
 			document.documentElement.setAttribute('data-theme', 'numberTwo');
 			break;
 		case 'switcher-middle':
-			themeSwitchBtn.classList.remove('switcher-middle');
-			console.log(themeSwitchBtn.classList);
-			themeSwitchBtn.classList.toggle('switcher-right');
+			themeToggleBtn.classList.remove('switcher-middle');
+			themeToggleBtn.classList.toggle('switcher-right');
 			document.documentElement.setAttribute('data-theme', 'numberThree');
 			break;
 		case 'switcher-right':
-			themeSwitchBtn.classList.remove('switcher-right');
-			console.log(themeSwitchBtn.classList);
-			themeSwitchBtn.classList.toggle('switcher-left');
+			themeToggleBtn.classList.remove('switcher-right');
+			themeToggleBtn.classList.toggle('switcher-left');
 			document.documentElement.setAttribute('data-theme', 'numberOne');
 			break;
 		default:
