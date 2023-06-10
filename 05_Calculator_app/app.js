@@ -106,7 +106,7 @@ operatorButtons.forEach((operatorBtn) =>
 
 // equal button event
 equalBtn.addEventListener('click', () => {
-	if (upperDisplayBox.textContent.length < 1) {
+	if (upperDisplayBox.textContent.length < 1 || (upperDisplayBox.textContent.length > 0 && mainDisplayBox.textContent.length < 1)) {
 		alert('You should insert two numbers.');
 	} else {
 		// i take the value of upper number and assign it to total
