@@ -1,0 +1,267 @@
+@import url('https://fonts.googleapis.com/css2?family=League+Spartan:wght@700&display=swap');
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/* 
+--main-bg: hsl(222, 26%, 31%);
+--header:  hsl(0, 0%, 100%);
+--switch-dot: hsl(6, 63%, 50%);
+--switch-bg: hsl(223, 31%, 20%);
+--screen-bg: hsl(224, 36%, 15%);
+--screen-text: hsl(0, 0%, 100%);
+--calc-bg: hsl(223, 31%, 20%);
+--key1-bg: hsl(30, 25%, 89%);
+--key1-shadow: hsl(28, 16%, 65%);
+--key1-text: hsl(221, 14%, 31%);
+--key2-bg: hsl(225, 21%, 49%);
+--key2-shadow: hsl(224, 28%, 35%);
+--key2-text: hsl(0, 0%, 100%);
+--key3-bg: hsl(6, 63%, 50%);
+--key3-shadow: hsl(6, 70%, 34%)
+--key3-text: hsl(0, 0%, 100%);
+ */
+
+:root[data-theme='numberOne'] {
+	--main-bg: hsl(222, 26%, 31%);
+	--header: hsl(0, 0%, 100%);
+	--switch-dot: hsl(6, 63%, 50%);
+	--switch-bg: hsl(223, 31%, 20%);
+	--screen-bg: hsl(224, 36%, 15%);
+	--screen-text: hsl(0, 0%, 100%);
+	--calc-bg: hsl(223, 31%, 20%);
+	--key1-bg: hsl(30, 25%, 89%);
+	--key1-shadow: hsl(28, 16%, 65%);
+	--key1-text: hsl(221, 14%, 31%);
+	--key2-bg: hsl(225, 21%, 49%);
+	--key2-shadow: hsl(224, 28%, 35%);
+	--key2-text: hsl(0, 0%, 100%);
+	--key3-bg: hsl(6, 63%, 50%);
+	--key3-shadow: hsl(6, 70%, 34%);
+	--key3-text: hsl(0, 0%, 100%);
+}
+
+:root[data-theme='numberTwo'] {
+	--main-bg: hsl(0, 0%, 90%);
+	--header: hsl(60, 10%, 19%);
+	--switch-dot: hsl(6, 63%, 50%);
+	--switch-bg: hsl(0, 5%, 81%);
+	--screen-bg: hsl(0, 0%, 93%);
+	--screen-text: hsl(60, 10%, 19%);
+	--calc-bg: hsl(0, 5%, 81%);
+	--key1-bg: hsl(45, 7%, 89%);
+	--key1-shadow: hsl(28, 16%, 65%);
+	--key1-text: hsl(221, 14%, 31%);
+	--key2-bg: hsl(185, 42%, 37%);
+	--key2-shadow: hsl(185, 58%, 25%);
+	--key2-text: hsl(45, 7%, 89%);
+	--key3-bg: hsl(25, 98%, 40%);
+	--key3-shadow: hsl(25, 99%, 27%);
+	--key3-text: hsl(45, 7%, 89%);
+}
+
+:root[data-theme='numberThree'] {
+	--main-bg: hsl(268, 75%, 9%);
+	--header: hsl(52, 100%, 62%);
+	--switch-dot: hsl(176, 100%, 44%);
+	--switch-bg: hsl(268, 71%, 12%);
+	--screen-bg: hsl(268, 71%, 12%);
+	--screen-text: hsl(52, 100%, 62%);
+	--calc-bg: hsl(268, 71%, 12%);
+	--key1-bg: hsl(268, 47%, 21%);
+	--key1-shadow: hsl(290, 70%, 36%);
+	--key1-text: hsl(52, 100%, 62%);
+	--key2-bg: hsl(281, 89%, 26%);
+	--key2-shadow: hsl(285, 91%, 52%);
+	--key2-text: hsl(45, 7%, 89%);
+	--key3-bg: hsl(176, 100%, 44%);
+	--key3-shadow: hsl(177, 92%, 70%);
+	--key3-text: hsl(268, 75%, 9%);
+
+	/* --------------------- */
+	/* --header: hsl(52, 100%, 62%);
+	--main-bg: hsl(268, 75%, 9%);
+	--toggle-bg: hsl(268, 71%, 12%);
+	--screen-bg: hsl(281, 89%, 26%);
+	--key2-bg: hsl(285, 91%, 52%);
+	--key2-shadow: hsl(176, 100%, 44%);
+	--key3-bg: hsl(177, 92%, 70%);
+	--key3-shadow: hsl(268, 47%, 21%);
+	--key1-bg: hsl(281, 89%, 26%);
+	--key1-shadow: hsl(52, 100%, 62%);
+	--btn-text: hsl(52, 100%, 62%);
+	--btn2-text: hsl(0, 0%, 100%); */
+}
+
+body {
+	font-family: 'League Spartan', sans-serif;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: var(--main-bg);
+	min-height: 100vh;
+	min-width: 100vw;
+	gap: 10px;
+}
+
+header {
+	color: var(--header);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 440px;
+	font-size: 20px;
+}
+
+.theme-indicator {
+	letter-spacing: 4.5px;
+}
+
+.switcher-container {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: center;
+	gap: 2px;
+}
+
+.theme-text {
+	font-size: 16px;
+}
+
+.switcher {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+.switcher-bg-container {
+	width: 68px;
+	height: 30px;
+	border-radius: 20px;
+	background-color: var(--switch-bg);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	padding: 0px 7px;
+	position: relative;
+}
+
+.switcher-left {
+	height: 17px;
+	width: 17px;
+	border-radius: 50%;
+	background-color: var(--switch-dot);
+	position: absolute;
+	left: 7px;
+	cursor: pointer;
+}
+
+.switcher-middle {
+	height: 17px;
+	width: 17px;
+	border-radius: 50%;
+	background-color: var(--switch-dot);
+	margin: auto;
+	cursor: pointer;
+}
+
+.switcher-right {
+	height: 17px;
+	width: 17px;
+	border-radius: 50%;
+	background-color: var(--switch-dot);
+	position: absolute;
+	right: 7px;
+	cursor: pointer;
+}
+
+.screen-container {
+	display: flex;
+	flex-direction: column;
+	width: 440px;
+	height: 100px;
+	background-color: var(--screen-bg);
+	border-radius: 10px;
+	padding: 20px 30px 20px 30px;
+	font-weight: 700;
+	gap: 15px;
+	color: var(--btn2-text);
+	text-align: right;
+}
+
+.screen-container {
+	color: var(--screen-text);
+}
+
+.upper-display {
+	font-size: 20px;
+	height: 40px;
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	gap: 5px;
+}
+
+.main-display {
+	font-size: 40px;
+	height: 35px;
+	width: 100%;
+}
+
+.buttons-container {
+	background-color: var(--calc-bg);
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 20px;
+	width: 440px;
+	padding: 30px;
+	border-radius: 10px;
+}
+
+.btn {
+	background-color: var(--key1-bg);
+	color: var(--key1-text);
+	height: 60px;
+	border-radius: 10px;
+	width: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 30px;
+	font-weight: 700;
+	filter: brightness(0.95);
+	padding-top: 5px;
+	box-shadow: 0px 4px 0px var(--key1-shadow);
+}
+
+.btn:hover {
+	cursor: pointer;
+	filter: none;
+}
+
+/* Wider buttons */
+.btn:nth-child(17),
+.btn:nth-child(18) {
+	width: 180px;
+}
+
+/* Second color buttons */
+.btn:nth-child(4),
+.btn:nth-child(17) {
+	background-color: var(--key2-bg);
+	color: var(--key2-text);
+	box-shadow: 0px 4px 0px var(--key2-shadow);
+}
+
+/* Third color buttons */
+.btn:nth-child(18) {
+	background-color: var(--key3-bg);
+	color: var(--key3-text);
+	box-shadow: 0px 4px 0px var(--key3-shadow);
+}

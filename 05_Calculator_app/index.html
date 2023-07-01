@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png" />
+		<title>Frontend Mentor | Calculator app</title>
+		<link rel="stylesheet" href="./styles.css" />
+		<script src="./app.js" defer></script>
+	</head>
+	<body>
+		<header>
+			<h1 class="title">calc</h1>
+			<div class="switcher-container">
+				<p class="theme-indicator">1 2 3</p>
+
+				<div class="switcher">
+					<p class="theme-text">THEME</p>
+					<div class="switcher-bg-container">
+						<div class="switcher-left" id="switch-btn"></div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="screen-container">
+			<div class="upper-display">
+				<div class="previous-number"></div>
+				<div class="operator"></div>
+			</div>
+			<div class="main-display">0</div>
+		</div>
+		<div class="buttons-container">
+			<div class="number-btn btn small-btn btn-7">7</div>
+			<div class="number-btn btn small-btn btn-8">8</div>
+			<div class="number-btn btn small-btn btn-9">9</div>
+			<div class="btn small-btn btn-delete">DEL</div>
+			<div class="number-btn btn small-btn btn-4">4</div>
+			<div class="number-btn btn small-btn btn-5">5</div>
+			<div class="number-btn btn small-btn btn-6">6</div>
+			<div class="operator-btn btn small-btn btn-add">+</div>
+			<div class="number-btn btn small-btn btn-1">1</div>
+			<div class="number-btn btn small-btn btn-2">2</div>
+			<div class="number-btn btn small-btn btn-3">3</div>
+			<div class="operator-btn btn small-btn btn-subtract">-</div>
+			<div class="dot-btn btn small-btn btn-dot">.</div>
+			<div class="number-btn btn small-btn btn-0">0</div>
+			<div class="operator-btn btn small-btn btn-divide">/</div>
+			<div class="operator-btn btn small-btn btn-multiply">*</div>
+			<div class="reset-btn btn big-btn btn-reset">RESET</div>
+			<div class="equal-btn btn big-btn btn-equal">=</div>
+		</div>
+	</body>
+</html>
